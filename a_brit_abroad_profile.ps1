@@ -11,7 +11,7 @@ function global:RestoreDB ([string] $newDBName, [string] $backupFilePath)
 {
     [string] $dbCommand = "RESTORE DATABASE [$newDBName] " +
                           "FROM    DISK = N'$backupFilePath' " +
-                          "WITH    FILE = 1, NOUNLOAD, STATS = 10"
+                          "WITH    REPLACE, FILE = 1, NOUNLOAD, STATS = 10"
 
     Invoke-Sqlcmd -Query $dbCommand
 }
